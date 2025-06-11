@@ -98,27 +98,3 @@ p { font-size: 1.2rem; margin-top: 0.5rem; }
 }
 
 
-/* — Mobile responsiveness for screens ≤ 600px */
-@media screen and (max-width: 600px) {
-  /* stack the graphic vertically */
-  .graphic {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  /* scale images to a comfortable width */
-  .graphic img {
-    max-width: 60vw;
-  }
-
-  /* allow the text block to fill the width */
-  .middle-text {
-    max-width: 80vw;
-    width: auto;        /* override any fixed width */
-  }
-
-  /* shrink the main heading a bit */
-  .title-row h1 {
-    font-size: 2rem;
-  }
-}
