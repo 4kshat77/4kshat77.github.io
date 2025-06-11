@@ -40,7 +40,7 @@ p { font-size: 1.2rem; margin-top: 0.5rem; }
 }
 /* — Graphic Section — */
 .graphic img {
-  max-width: 200px;
+  width: clamp(80px, 20vw, 200px);
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
