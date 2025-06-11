@@ -16,12 +16,20 @@ p { font-size: 1.2rem; margin-top: 0.5rem; }
 /* — Title + Logo — */
 .title-row {
   display: flex;
+  flex-wrap: wrap;          /* ← add this */
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-  position: relative; /* for spinner */
+  position: relative;       /* for the spinner */
 }
+.title-row h1 {
+  font-size: clamp(1.5rem, 6vw, 4rem);   /* scales between 1.5rem and 4rem */
+  margin: 0;
+  overflow-wrap: break-word;             /* allow breaks at underscores/anywhere */
+}
+
+
 .logo {
   width: 50px;
   cursor: pointer;
