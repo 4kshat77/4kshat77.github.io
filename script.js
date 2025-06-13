@@ -1,16 +1,24 @@
-// 1) Toggle “collapsed” on the graphic when either image is clicked
+// DOM Elements
 const graphic = document.querySelector('.graphic');
-document.querySelectorAll('.curly-img').forEach(img => {
-  img.addEventListener('click', () => {
-    graphic.classList.toggle('collapsed');
-  });
-});
+const logo = document.getElementById('logo');
+const curlyImages = document.querySelectorAll('.curly-img');
 
-// 2) Show a brief “compile”-style spinner when the logo is clicked
-document.getElementById('logo').addEventListener('click', function() {
+// Event Handlers
+const toggleGraphicCollapse = () => {
+  graphic.classList.toggle('collapsed');
+};
+
+const showCompileSpinner = () => {
   const spinner = document.createElement('div');
   spinner.className = 'compile-spinner';
   spinner.innerHTML = '<span>&lt;/&gt;</span>';
-  this.parentElement.appendChild(spinner);
+  logo.parentElement.appendChild(spinner);
   setTimeout(() => spinner.remove(), 1000);
+};
+
+// Event Listeners
+curlyImages.forEach(img => {
+  img.addEventListener('click', toggleGraphicCollapse);
 });
+
+logo.addEventListener('click', showCompileSpinner);
