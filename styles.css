@@ -19,6 +19,30 @@ body {
   color: var(--primary-color);
 }
 
+/* — Three.js Car Container — */
+#car-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 80px;
+  z-index: 1000;
+  pointer-events: none;
+  transition: all 0.1s ease-out;
+}
+
+#car-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+  pointer-events: all;
+}
+
+#car-container canvas:active {
+  cursor: grabbing;
+}
+
 /* — Base & Layout — */
 .container { text-align: center; }
 h1 { font-size: 4rem; margin: 0; }

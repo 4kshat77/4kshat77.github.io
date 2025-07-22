@@ -7,6 +7,14 @@ const projectCards = document.querySelectorAll('.project-card');
 // Get all elements that should have dynamic shadows (excluding logo/prof1 image)
 const shadowElements = document.querySelectorAll('.curly-img, .project-card, .mini-terminal, .middle-text button');
 
+// Car Controller Instance
+let carController;
+
+// Configuration - vehicle cycling system
+const VEHICLE_TYPES = ['car', 'plane', 'boat']; // Cycle order: car → plane → boat → car
+let currentVehicleIndex = 0; // Start with car (index 0)
+let VEHICLE_TYPE = VEHICLE_TYPES[currentVehicleIndex];
+
 // Event Handlers
 const toggleGraphicCollapse = () => {
   graphic.classList.toggle('collapsed');
@@ -18,6 +26,26 @@ const showCompileSpinner = () => {
   spinner.innerHTML = '<span>&lt;/&gt;</span>';
   logo.parentElement.appendChild(spinner);
   setTimeout(() => spinner.remove(), 1000);
+};
+
+// Vehicle cycling functionality
+const cycleVehicle = () => {
+  // Show compile spinner for visual feedback
+  showCompileSpinner();
+  
+  // Wait for loading animation to complete (1 second) before switching vehicle
+  setTimeout(() => {
+    // Move to next vehicle in the cycle
+    currentVehicleIndex = (currentVehicleIndex + 1) % VEHICLE_TYPES.length;
+    VEHICLE_TYPE = VEHICLE_TYPES[currentVehicleIndex];
+    
+    // Switch to the new vehicle
+    if (carController) {
+      carController.switchVehicle(VEHICLE_TYPE);
+    }
+    
+    console.log(`Switched to: ${VEHICLE_TYPE}`);
+  }, 1000); // Wait 1 second for the spinner animation to complete
 };
 
 const handleProjectCardClick = (card) => {
@@ -55,7 +83,7 @@ curlyImages.forEach(img => {
   img.addEventListener('click', toggleGraphicCollapse);
 });
 
-logo.addEventListener('click', showCompileSpinner);
+logo.addEventListener('click', cycleVehicle);
 
 projectCards.forEach(card => {
   card.addEventListener('click', () => handleProjectCardClick(card));
@@ -66,6 +94,15 @@ document.addEventListener('mousemove', updateShadows);
 
 // Initialize shadows on page load
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize the 3D vehicle controller with chosen vehicle type
+  carController = new CarController(VEHICLE_TYPE);
+  carController.initVehicle();
+  
+  // Set initial vehicle position just above "Thank you for your support!" text
+  const initialX = window.innerWidth / 2;
+  const initialY = window.innerHeight * 0.55; // A bit higher up - around 55% down the page
+  carController.setInitialPosition(initialX, initialY);
+  
   // Set initial shadow position (center)
   updateShadows({ clientX: window.innerWidth / 2 });
 });
