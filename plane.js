@@ -117,21 +117,48 @@ class PlaneDesign {
     noseGear.position.set(0, -0.075, 0.6);
     this.plane.add(noseGear);
 
-    // Wheels
-    const wheelGeometry = new THREE.CylinderGeometry(0.04, 0.04, 0.02, 8);
-    const wheelMaterial = new THREE.MeshLambertMaterial({ color: 0x222222 });
+    // Big aircraft wheels - similar to car but smaller
+    const wheelGeometry = new THREE.CylinderGeometry(0.08, 0.08, 0.04, 8);
+    const wheelMaterial = new THREE.MeshLambertMaterial({ color: 0x111111 });
+    
+    // Aircraft rims for the wheels
+    const rimGeometry = new THREE.CylinderGeometry(0.06, 0.06, 0.045, 6);
+    const rimMaterial = new THREE.MeshLambertMaterial({ color: 0x999999 }); // Silver rims
+    
+    // Main landing gear wheels (left and right)
     const wheel1 = new THREE.Mesh(wheelGeometry, wheelMaterial);
     const wheel2 = new THREE.Mesh(wheelGeometry, wheelMaterial);
-    const wheel3 = new THREE.Mesh(wheelGeometry, wheelMaterial);
+    const rim1 = new THREE.Mesh(rimGeometry, rimMaterial);
+    const rim2 = new THREE.Mesh(rimGeometry, rimMaterial);
+    
     wheel1.position.set(0.6, -0.15, 0.1);
     wheel2.position.set(-0.6, -0.15, 0.1);
-    wheel3.position.set(0, -0.15, 0.6);
+    rim1.position.set(0.6, -0.15, 0.1);
+    rim2.position.set(-0.6, -0.15, 0.1);
+    
     wheel1.rotation.z = Math.PI / 2;
     wheel2.rotation.z = Math.PI / 2;
-    wheel3.rotation.z = Math.PI / 2;
+    rim1.rotation.z = Math.PI / 2;
+    rim2.rotation.z = Math.PI / 2;
+    
     this.plane.add(wheel1);
     this.plane.add(wheel2);
+    this.plane.add(rim1);
+    this.plane.add(rim2);
+    
+    // Nose wheel (bigger for visibility)
+    const noseWheelGeometry = new THREE.CylinderGeometry(0.1, 0.1, 0.05, 8);
+    const noseRimGeometry = new THREE.CylinderGeometry(0.075, 0.075, 0.055, 6);
+    const wheel3 = new THREE.Mesh(noseWheelGeometry, wheelMaterial);
+    const rim3 = new THREE.Mesh(noseRimGeometry, rimMaterial);
+    
+    wheel3.position.set(0, -0.15, 0.6);
+    rim3.position.set(0, -0.15, 0.6);
+    wheel3.rotation.z = Math.PI / 2;
+    rim3.rotation.z = Math.PI / 2;
+    
     this.plane.add(wheel3);
+    this.plane.add(rim3);
 
     // Navigation lights
     const navLightGeometry = new THREE.SphereGeometry(0.015, 6, 4);

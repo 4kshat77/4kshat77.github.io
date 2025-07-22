@@ -103,33 +103,33 @@ class SportsCarDesign {
   }
 
   createWheels() {
-    // Lower profile sport wheels
-    const wheelGeometry = new THREE.CylinderGeometry(0.12, 0.12, 0.06, 8);
+    // HUGE jeep-style wheels - massive off-road look
+    const wheelGeometry = new THREE.CylinderGeometry(0.28, 0.28, 0.12, 8);
     const wheelMaterial = new THREE.MeshLambertMaterial({ color: 0x111111 });
     
-    // Performance rims - larger and more detailed
-    const rimGeometry = new THREE.CylinderGeometry(0.09, 0.09, 0.07, 6);
+    // Large heavy-duty rims to match huge wheels
+    const rimGeometry = new THREE.CylinderGeometry(0.22, 0.22, 0.13, 6);
     const rimMaterial = new THREE.MeshLambertMaterial({ color: 0x999999 }); // Brighter silver
     
     const wheelPositions = [
-      { x: 0.45, y: -0.15, z: 0.6 },   // Front right (positive Z is now front)
-      { x: -0.45, y: -0.15, z: 0.6 },  // Front left (positive Z is now front)
-      { x: 0.45, y: -0.15, z: -0.6 },   // Rear right (negative Z is now back)
-      { x: -0.45, y: -0.15, z: -0.6 }   // Rear left (negative Z is now back)
+      { x: 0.55, y: -0.08, z: 0.6 },   // Front right (further out and higher)
+      { x: -0.55, y: -0.08, z: 0.6 },  // Front left (further out and higher)
+      { x: 0.55, y: -0.08, z: -0.6 },   // Rear right (further out and higher)
+      { x: -0.55, y: -0.08, z: -0.6 }   // Rear left (further out and higher)
     ];
 
     wheelPositions.forEach(pos => {
       // Create wheel
       const wheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
       wheel.position.set(pos.x, pos.y, pos.z);
-      wheel.rotation.x = Math.PI / 2;
+      wheel.rotation.z = Math.PI / 2; // Rotate around Z-axis instead of X-axis
       this.car.add(wheel);
       this.wheels.push(wheel);
       
       // Create rim
       const rim = new THREE.Mesh(rimGeometry, rimMaterial);
       rim.position.set(pos.x, pos.y, pos.z);
-      rim.rotation.x = Math.PI / 2;
+      rim.rotation.z = Math.PI / 2; // Rotate around Z-axis instead of X-axis
       this.car.add(rim);
     });
   }
