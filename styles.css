@@ -218,9 +218,8 @@ p { font-size: 1.2rem; margin-top: 0.5rem; }
 }
 
 .project-card.skeleton .project-thumbnail {
-    background: linear-gradient(90deg, #d0d0d0 25%, #e0e0e0 50%, #d0d0d0 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+    background: #d0d0d0;
+    /* Removed shimmer animation for static display */
 }
 
 .project-title-skeleton {
@@ -341,17 +340,11 @@ p { font-size: 1.2rem; margin-top: 0.5rem; }
 
 .terminal-cursor {
     color: #00ff88;
-    animation: blink 1s infinite;
+    /* Removed animation for static display */
 }
 
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
+/* Removed blink animation keyframes for static display */
 
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
+/* Removed shimmer animation keyframes for static display */
 
 
