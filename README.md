@@ -21,7 +21,7 @@ A professional portfolio website showcasing technical skills, projects, and prof
 
 ## Project Structure
 
-```
+```tree
 project-root/
 │
 ├── index.html          # Main HTML document

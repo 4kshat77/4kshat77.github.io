@@ -169,4 +169,189 @@ p { font-size: 1.2rem; margin-top: 0.5rem; }
     50% { transform: translateY(-10px); }
 }
 
+/* — Project Grid Skeleton — */
+.projects-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid transparent;
+    overflow: hidden;
+    width: 180px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.project-card.skeleton {
+    background: #e0e0e0;
+    opacity: 0.5;
+}
+
+.project-card:hover,
+.project-card.active {
+    opacity: 1;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: var(--primary-color);
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 60px;
+    background: #d0d0d0;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card.skeleton .project-thumbnail {
+    background: linear-gradient(90deg, #d0d0d0 25%, #e0e0e0 50%, #d0d0d0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.project-title-skeleton {
+    width: 70%;
+    height: 12px;
+    background: #c0c0c0;
+    border-radius: 3px;
+    margin-bottom: 0.3rem;
+}
+
+.project-description-skeleton {
+    width: 100%;
+    height: 8px;
+    background: #c0c0c0;
+    border-radius: 3px;
+    margin-bottom: 0.3rem;
+}
+
+.project-description-skeleton:last-child {
+    width: 60%;
+}
+
+/* Services text styling */
+.services-text {
+    color: #00ff88 !important;
+    font-weight: bold;
+}
+
+/* Message overlay */
+.project-card::after {
+    content: "Offering web and mobile app development ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(51, 51, 51, 0.95);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.project-card::before {
+    content: "Services soon";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    color: #00ff88;
+    font-size: 0.75rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.project-card:hover::after,
+.project-card.active::after,
+.project-card:hover::before,
+.project-card.active::before {
+    opacity: 1;
+}
+
+/* Mini Terminal */
+.mini-terminal {
+    background: #1e1e1e;
+    border-radius: 8px;
+    width: 200px;
+    height: 145px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ff5f56; }
+.terminal-dot.yellow { background: #ffbd2e; }
+.terminal-dot.green { background: #27ca3f; }
+
+.terminal-body {
+    padding: 0.75rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #00ff88;
+    background: #1e1e1e;
+    height: calc(100% - 50px);
+    text-align: left;
+}
+
+.terminal-prompt {
+    color: #ffffff;
+    margin-right: 0.25rem;
+}
+
+.terminal-cursor {
+    color: #00ff88;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
 
