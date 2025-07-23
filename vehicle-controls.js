@@ -11,7 +11,7 @@ class VehicleController {
     this.movingParts = [];
     this.keys = {};
     this.vehiclePosition = { x: 0, y: 0 };
-    this.vehicleRotation = Math.PI / 2; // Start facing right (90 degrees)
+    this.vehicleRotation = Math.PI; // Start facing upwards (180 degrees)
     this.vehicleSpeed = 0;
     this.vehicleContainer = null;
     this.vehicleDesign = null;
@@ -62,7 +62,7 @@ class VehicleController {
   }
 
   updateVehicleMovement() {
-    const moveSpeed = 2; // Constant speed
+    const moveSpeed = 3; // Increased speed for faster movement
     const turnSpeed = 0.03;
     
     let isMoving = false;

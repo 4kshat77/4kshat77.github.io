@@ -273,50 +273,56 @@ p { font-size: 1.2rem; margin-top: 0.5rem; }
     font-weight: bold;
 }
 
-/* Message overlay */
-.project-card::after {
-    content: "Offering web and mobile app development ";
+
+.project-card:hover .project-thumbnail::after {
+    display: block;
+    text-align: left;
+    font-weight: 700;
+    content: "Offering Web & mobile app development";
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    background: rgba(51, 51, 51, 0.95);
-    color: white;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #000000;
+    letter-spacing: 0.01rem;
+    background: transparent;
+    width: calc(100% + 20px);
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0.4rem;
-    /* font-size: 0.5.5rem; */
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 12px;
-    flex-direction: column;
-    line-height: 1.2;
 }
 
-.project-card::before {
+.project-card:hover {
+    background: #949494; /* Whole skeleton card background grey */
+}
+
+.project-card:hover .project-title-skeleton,
+.project-card:hover .project-description-skeleton {
+    background: transparent; /* Remove box behind services soon */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #00ff88 ;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+.project-card:hover .project-title-skeleton::after {
     content: "Services soon";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 140%);
-    color: #00ff88;
-    font-size: 0.85rem;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-    pointer-events: none;
+    display: block;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    width: 100%;
 }
 
-.project-card:hover::after,
-.project-card.active::after,
-.project-card:hover::before,
-.project-card.active::before {
-    opacity: 1;
+/* Keep the description skeleton bars visible on hover */
+.project-card:hover .project-description-skeleton {
+    display: block;
 }
 
 /* Mini Terminal */
